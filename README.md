@@ -24,6 +24,8 @@ This Spring Boot application allows users to upload, manage, and view videos. It
 ## Prerequisites
 
 - java 17
+eclipse Ide 
+
 
 ## Installation
 
