@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Video</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Edit Video</h1>
+        <nav>
+            <a href="/videos" class="btn">Back to List</a>
+        </nav>
+    </header>
+    <main>
+        <form th:action="@{/videos/{id}/update(id=${video.id})}" method="post">
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" name="title" id="title" th:value="${video.title}" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea name="description" id="description" required th:text="${video.description}"></textarea>
+            </div>
+            <button type="submit">Update</button>
+        </form>
+    </main>
+</body>
+</html>

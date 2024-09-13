@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Video List</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Video List</h1>
+        <nav>
+            <a href="/videos/upload" class="btn">Upload New Video</a>
+        </nav>
+    </header>
+    <main>
+        <ul class="video-list">
+            <li th:each="video : ${videos}">
+                <div class="video-item">
+                    <h2 th:text="${video.title}">Video Title</h2>
+                    <a th:href="@{/videos/{id}(id=${video.id})}" class="btn">View</a>
+                    <a th:href="@{/videos/{id}/edit(id=${video.id})}" class="btn">Edit</a>
+                    <a th:href="@{/videos/{id}/delete(id=${video.id})}" class="btn">Delete</a>
+                    <form th:action="@{/videos/{id}/togglePrivacy(id=${video.id})}" method="post" class="toggle-form">
+                        <button type="submit" class="btn" th:text="${video.isPrivate ? 'Make Public' : 'Make Private'}"></button>
+                    </form>
+                </div>
+            </li>
+        </ul>
+    </main>
+</body>
+</html>

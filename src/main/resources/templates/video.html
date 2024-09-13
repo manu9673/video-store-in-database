@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View Video</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <h1 th:text="${video.title}">Video Title</h1>
+        <nav>
+            <a href="/videos" class="btn">Back to List</a>
+        </nav>
+    </header>
+    <main>
+        <div class="video-details">
+            <video th:if="${!video.isPrivate}" th:src="@{/uploads/{filename}(filename=${video.fileName})}" controls></video>
+            <p th:if="${!video.isPrivate}" th:text="${video.description}">Description</p>
+            <p th:if="${video.isPrivate}">This video is private and cannot be viewed.</p>
+        </div>
+    </main>
+</body>
+</html>
